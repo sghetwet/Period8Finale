@@ -1,35 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.InputSystem.Android.LowLevel;
+using UnityEngine.UI;
 public class BatteryPower : MonoBehaviour
 {
-    public int maxPower = 3;
-    public int currentPower;
+    [Header("Component")]
+    public TextMeshProUGUI timerText;
+    [Header("Timer Setting")]
+    public float currentTime;
+    public bool countDown;
 
 
-    void Start()
+    void Update()
     {
-        currentPower = maxPower;
-    }
+        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
 
-    void TakeDamage(int amount)
-    {
-        currentPower -= amount;
-
-        if (currentPower < 0)
-        {
-            //dead, play anim, show game over
-        }
-
-    }
-    void Heal(int amount)
-    {
-        currentPower += amount;
-
-        if (currentPower > maxPower)
-        {
-            //dead, play anim, show game over
-        }
+        timerText.text = currentTime.ToString();
     }
 }
