@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody playerRb;
     private float speed = 5f;
     private float horizontalInput;
-    private float jumpoForce = 5;
+    private float jumpoForce = 10;
     public bool OnGround;
     // Start is called before the first frame update
     void Start()
